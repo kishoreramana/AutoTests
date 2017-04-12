@@ -5,6 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
+import org.openqa.selenium.support.PageFactory;
 
 public class VehicleDetailsPage {
 
@@ -12,26 +13,26 @@ public class VehicleDetailsPage {
 
 	public VehicleDetailsPage(WebDriver driver) {
 		this.driver = driver;
+		PageFactory.initElements(driver, this);
 	}
 
-	@FindBy(how = How.XPATH, using = "//span[text()='Settings']")
+	@FindBy(how = How.XPATH, using = "//span[@class='registrationNumber']")
 	@CacheLookup
-	WebElement vehicleRegNum;
+	WebElement vdRegNum;
 
-	@FindBy(how = How.XPATH, using = "//span[text()='Settings']")
+	@FindBy(tagName="li[1]", how = How.XPATH, using = "//span[text='Vehicle make']")
 	@CacheLookup
-	WebElement vehicleMake;
+	WebElement vdMake;
 
-	
-	public WebElement getVehicleRegNum() {
-		return vehicleRegNum;
+	public WebElement getVdRegNum() {
+		return vdRegNum;
 	}
 
-	public WebElement getVehicleMake() {
-		return vehicleMake;
+	public WebElement getVdMake() {
+		return vdMake;
 	}
 
-	public void closeDriver(){
+	public void closeDriver() {
 		this.driver.close();
 	}
 }
