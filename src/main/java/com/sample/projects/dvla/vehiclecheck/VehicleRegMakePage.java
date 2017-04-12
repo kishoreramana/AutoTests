@@ -17,18 +17,20 @@ public class VehicleRegMakePage {
 	}
 
 	@FindBy(id = "Vrm")
-	@CacheLookup
+	//@CacheLookup
 	WebElement vehicleRegNum;
 
 	@FindBy(id = "Make")
-	@CacheLookup
+	//@CacheLookup
 	WebElement vehicleMake;
 
 	@FindBy(how = How.ID, using = "Search")
 	@CacheLookup
 	WebElement submitButton;
 
-	public void searchVehicleDetails(String vehicleRegNum, String vehicleMake) {
+	public void searchVehicle(String vehicleRegNum, String vehicleMake) {
+		this.vehicleRegNum.clear();
+		this.vehicleMake.clear();
 		this.vehicleRegNum.sendKeys(vehicleRegNum);
 		this.vehicleMake.sendKeys(vehicleMake);
 		submitButton.click();
